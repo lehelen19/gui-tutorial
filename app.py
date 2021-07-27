@@ -2,6 +2,11 @@ import tkinter as tk # helps create gui
 from tkinter import filedialog, Text
 import os # allows us to run the app
 
+'''
+This app will automatically run apps you add to the list
+and save them so you don't have to re-add them.
+'''
+
 root = tk.Tk() # html - body; holds the entire structure
 apps =  [] # contains the location of the files we open
 
