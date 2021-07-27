@@ -22,6 +22,10 @@ def addApp():
         label = tk.Label(frame, text=app, bg="gray") # label of the app
         label.pack()
 
+def runApps():
+    for app in apps:
+        os.startfile(app) # start all of the apps in the list
+
 # making the canvas bigger
 canvas = tk.Canvas(root, height=700, width=700, bg="#263D42")
 # attach to root
@@ -36,7 +40,12 @@ openFile = tk.Button(root, text="Open File", padx=10, pady=5, fg="white", bg="#2
 openFile.pack()
 
 # run apps button
-runApps = tk.Button(root, text="Run Apps", padx=10, pady=5, fg="white", bg="#263D42")
+runApps = tk.Button(root, text="Run Apps", padx=10, pady=5, fg="white", bg="#263D42", command=runApps)
 runApps.pack()
 
 root.mainloop()
+
+# whenever we close our app, write all saved apps to save file
+with open('save.txt', 'w') as f:
+    for app in apps:
+        f.write(app + ',')
