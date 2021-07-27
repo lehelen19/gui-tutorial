@@ -3,6 +3,13 @@ from tkinter import filedialog, Text
 import os # allows us to run the app
 
 root = tk.Tk() # html - body; holds the entire structure
+apps =  []
+
+# open files, click on the file, and save
+# only allows executables
+def addApp():
+    filename = filedialog.askopenfilename(initialdir="/", title="select File",
+    filetypes=(("executables", "*.exe"), ("all files", "*.*")))
 
 # making the canvas bigger
 canvas = tk.Canvas(root, height=700, width=700, bg="#263D42")
@@ -14,7 +21,11 @@ frame = tk.Frame(root, bg="white")
 frame.place(relwidth=0.8, relheight=0.8, relx=0.1, rely=0.1)
 
 # add buttons
-openFile = tk.Button(root, text="Open File", padx=10, pady=5, fg="white", bg="#263D42")
+openFile = tk.Button(root, text="Open File", padx=10, pady=5, fg="white", bg="#263D42", command=addApp)
 openFile.pack()
+
+# run apps button
+runApps = tk.Button(root, text="Run Apps", padx=10, pady=5, fg="white", bg="#263D42")
+runApps.pack()
 
 root.mainloop()
