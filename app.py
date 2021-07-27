@@ -5,6 +5,13 @@ import os # allows us to run the app
 root = tk.Tk() # html - body; holds the entire structure
 apps =  [] # contains the location of the files we open
 
+# load up text file to see what we've saved
+if os.path.isfile('save.txt'):
+    with open('save.txt', 'r') as f:
+        tempApps = f.read()
+        tempApps = tempApps.split(',')
+        apps = [x for x in tempApps if x.strip()] # don't add if it's just a blank space
+
 # open files, click on the file, and save
 # only allows executables
 def addApp():
@@ -42,6 +49,10 @@ openFile.pack()
 # run apps button
 runApps = tk.Button(root, text="Run Apps", padx=10, pady=5, fg="white", bg="#263D42", command=runApps)
 runApps.pack()
+
+for app in apps:
+    label = tk.Label(frame, text=app)
+    label.pack()
 
 root.mainloop()
 
